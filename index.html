@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>MIRAGE: A Benchmark for Multimodal Information‑Seeking and Reasoning in Agricultural Expert‑Guided Conversations</title>
+    <meta name="description" content="MIRAGE is a benchmark for multimodal expert‑level reasoning and decision‑making in agricultural consultative interactions." />
+    <meta name="keywords" content="MIRAGE, benchmark, agriculture, multimodal, vision‑language model, expert reasoning, information seeking" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Icons & Fonts -->
+    <link rel="icon" href="./static/figures/logo/32x32.png" />
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/fff5b27ec1.js" crossorigin="anonymous"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/index.js"></script>
+  </head>
+  <body>
+    <!-- ‑‑‑‑ NAVBAR ‑‑‑‑ -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- ‑‑‑‑ HERO SECTION ‑‑‑‑ -->
+    <!-- <section class="hero is-medium is-light"> -->
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title is-1">
+            <img src="static/figures/logo/512x512.png" style="width:1.2em; vertical-align:middle;" alt="Logo" />
+            <span style="vertical-align:middle">MIRAGE</span>
+          </h1>
+          <h2 class="subtitle is-3">A Benchmark for Multimodal Information‑Seeking and Reasoning in Agricultural Expert‑Guided Conversations</h2>
+
+          <!-- AUTHORS -->
+          <div class="is-size-5 publication-authors">
+            <p>
+              <span class="author-block">Vardhan Dongre<sup>1*</sup>,</span>
+              <span class="author-block">Chi Gui<sup>1*</sup>,</span>
+              <span class="author-block">Hooshang Nayyeri<sup>2</sup>,</span>
+              <span class="author-block">Shubham Garg<sup>2</sup>,</span>
+              <span class="author-block">Gokhan Tür<sup>1</sup>,</span>
+              <span class="author-block">Dilek Hakkani‑Tür<sup>1</sup>,</span>
+              <span class="author-block">Vikram Adve<sup>1</sup></span>
+            </p>
+            <p class="is-size-6 mt-2">
+              <sup>1</sup>AIFARMS &nbsp;
+              <sup>2</sup>Amazon
+            </p>
+            <p class="is-size-5"><span class="has-text-grey">* Equal contributions</span></p>
+          </div>
+
+          <!-- LINKS -->
+          <div class="buttons is-centered mt-4">
+            <span class="link-block">
+              <a href="https://huggingface.co/datasets/MIRAGE-Benchmark/MIRAGE" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon" style="font-size:18px">🤗</span>
+                <span>Dataset</span>
+              </a>        
+            </span>
+            <span class="link-block">
+              <a href="https://github.com/vardhandongre/MIRAGE-Benchmark" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+            </span>
+            <!-- <a href="#leaderboard" class="button is-dark is-rounded"><span class="icon"><i class="fas fa-trophy"></i></span><span>Leaderboard</span></a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ‑‑‑‑ ABSTRACT ‑‑‑‑ -->
+    <section id="abstract" class="section">
+      <div class="container is-max-desktop content">
+      <div style="text-align: center;">
+        <h2 class="title is-3">Abstract</h2>
+      </div>
+        <p>
+          We introduce <strong>MIRAGE</strong>, a new benchmark for multimodal expert‑level reasoning and decision‑making in consultative interaction settings. Designed for the agriculture domain, MIRAGE captures the full complexity of expert consultations by combining natural user queries, expert‑authored responses, and image‑based context, offering a high‑fidelity benchmark for evaluating models on grounded reasoning, clarification strategies, and long‑form generation.
+        </p>
+        <p>
+          Grounded in over 35,000 real user–expert interactions and curated through a carefully designed multi‑step pipeline, MIRAGE spans diverse crop health, pest diagnosis, and crop management scenarios. The benchmark includes more than 7,000 unique biological entities, covering plant species, pests, and diseases—making it one of the most taxonomically diverse benchmarks available for vision‑language models.
+        </p>
+        <p>
+          Unlike existing benchmarks that rely on well‑specified user inputs and closed‑set taxonomies, MIRAGE features underspecified, context‑rich scenarios with open‑world settings, requiring models to infer latent knowledge gaps, handle rare entities, and proactively guide or respond within the interaction.
+        </p>
+        <p>
+          We evaluate more than 20 frontier vision‑language models using an ensemble of reasoning language models as evaluators, highlighting the significant challenges posed by MIRAGE. Despite strong performance on conventional benchmarks, state‑of‑the‑art VLMs struggle on MIRAGE—particularly in scenarios encountering rare entities and addressing open‑ended user requests. Fine‑tuning <em>Qwen2.5‑VL</em> models on MIRAGE yields measurable gains, demonstrating MIRAGE’s value both as a benchmark and a development suite for in‑domain visual reasoning and conversational decision‑making.
+        </p>
+      </div>
+    </section>
+
+    <!-- MIRAGE-MMST SECTION -->
+    <section id="MIRAGE-MMST">
+      <section id="MIRAGE-MMST Title" class="hero is-light is-small">
+      <div class="hero-body has-text-centered">
+        <h1 class="title is-3">
+          <!-- style="height: 4rem; margin-right: 0.4rem; position: relative; top: 0.7rem;" -->
+        <img src="static/figures/MMST/512x512.png" alt="Icon" style="height: 4rem; position: relative; top: 0.7rem;"/>MIRAGE-MMST: Multimodal Singleturn Benchmark
+        </h1>
+      </div>
+      </section>      
+      <div class="container is-max-desktop">
+        <!-- Overview -->
+        <h3 class="title is-4" style="text-align: center; margin-top: 2rem;">MIRAGE-MMST Overview</h3>
+            <p style="margin-bottom: 1.5rem;">
+                <strong>MIRAGE-MMST</strong> is a benchmark designed to assess expert-level, single-turn reasoning in multimodal agricultural consultations. The task setup is similar to a Long-form VQA task. Each instance consists of a natural language question paired with one or more user-provided images and associated metadata (e.g., timestamp, location). Each instance consists of a natural language question <em>q</em>, an associated image set <em>I = {i<sub>1</sub>, …, i<sub>m</sub>}</em>, and metadata <em>meta ∈ M</em>. Formally, a single-turn instance is represented as a triplet <em>(q, I, meta) ∈ Q × I<sup>m</sup> × M</em>, and the model must generate a structured response <em>r = (e, c ∨ m)</em>, where <em>e</em> denotes identified entities (e.g., crop, pest, disease), <em>c</em> is a causal explanation, and <em>m</em> is a management recommendation, if requested. The task evaluates the model's ability to reason causally about visual symptoms, identify relevant agronomic entities, and, when prompted, generate detailed management recommendations grounded in the observed evidence.
+            </p>
+            
+            <p style="margin-bottom: 1.5rem;">
+                To support varying levels of difficulty and contextual grounding, MIRAGE-MMST is divided into two subsets: a <strong>Standard</strong> subset, consisting of self-contained questions that can be answered using only the provided text and image, and a <strong>Contextual</strong> subset, where successful interpretation depends on implicit information such as time, location, or agricultural context not present in the input. The standard subset evaluates a model's ability to identify entities, infer causal relationships, and generate explanatory or recommendation-based responses. In contrast, the contextual subset contains queries with latent information gaps and elliptical language, requiring models to reconstruct missing context using external priors. We first manually annotated a seed set of contextual examples and then adopted an automated classifier to separate the full dataset.
+            </p>
+
+        <!-- Image for Statistic -->
+        <div class="has-text-centered">
+          <img src="static/figures/MMST/MMST_Statistic.jpg" alt="MIRAGE-MMST Statistics" style="max-width: 60%; height: auto;" title="MIRAGE-MMST Statistics" />
+        </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <h3 class="title is-4 mt-5"  style="text-align: center;" >MIRAGE-MMST Leaderboard</h3>
+        <div class="box has-text-centered">
+        <p class="is-size-5">Leaderboard — coming soon</p>
+      </div>
+    </section>
+
+    <section id="MIRAGE-MMMT">
+      <section id="MIRAGE-MMMT Title" class="hero is-light is-small">
+      <div class="hero-body has-text-centered">
+        <h1 class="title is-3">
+        <img src="static/figures/MMMT/512x512.png" alt="Icon" style="height: 4rem; margin-right: 0.4rem; position: relative; top: 0.7rem;" />MIRAGE-MMMT: Multimodal Multiturn Benchmark
+        </h1>      
+      </div>
+      </section>      
+      <div class="container is-max-desktop">
+        <!-- Overview -->
+        <h3 class="title is-4" style="text-align: center; margin-top: 2rem;">MIRAGE-MMST Overview</h3>
+            <p style="margin-bottom: 1.5rem;">
+                <strong>MIRAGE-MMMT</strong> is a multimodal decision-making task, grounded in real-world agricultural consultations. Users pose complex, often image-supported questions about plant health, pest identification, growing conditions, and other agronomic concerns. Each dialogue reflects a practical scenario in which the expert must reason over conversation history and visual context to decide: (1) whether to respond with guidance based on what is known, or (2) whether to pause and seek additional input to resolve a knowledge gap. This introduces a decision-making challenge tightly coupled with natural language generation.
+            </p>
+        <!-- Image for Statistic -->
+        <div class="has-text-centered">
+          <img src="static/figures/MMMT/MMMT_Statistic.jpg" alt="MIRAGE-MMMT Statistics" style="max-width: 30%; height: auto;" />
+        </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <h3 class="title is-4 mt-5"  style="text-align: center;" >MIRAGE-MMMT Leaderboard</h3>
+        <div class="box has-text-centered">
+        <p class="is-size-5">Leaderboard — coming soon</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          Website template adapted from <a href="https://nerfies.github.io/">Nerfies</a> under CC BY‑SA‑4.0.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
