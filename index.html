@@ -16,63 +16,13 @@
     <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
     <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
     <link rel="stylesheet" href="./static/css/index.css" />
-    <style>
-        body { font-family: sans-serif; }
-        .lb-wrapper {max-width:1100px;margin:40px auto 60px;}
-
-        .sectionsubtitle { text-align: center; font-size: 1.6em; font-weight: bold; margin-bottom: 25px; }
-        .legend { text-align: center; margin-bottom: 25px; }
-        .legend-item { display: inline-block; padding: 8px 16px; margin: 0 8px; border-radius: 8px; font-size: 0.9em; }
-        .legend-open { background-color: #e6f0ff; }
-        .legend-proprietary { background-color: #ffe6e6; }
-
-        tr.open-col td {background:#e6f0ff !important;}
-        tr.proprietary-col td {background:#ffe6e6 !important;}
-        td.best {font-weight:bold;}
-
-        #lb thead th {
-          text-align: center;
-          vertical-align: middle;
-        }
-        
-        #lb th.separator,
-        #lb td.separator {
-          border-right: 1px solid #d3d3d3;
-        }
-
-   /* Description 样式优化 */
-  .description-wrapper {
-    margin-top: 48px;
-    padding: 32px 38px;
-    background: linear-gradient(180deg,#fafafa 0%,#f5f5f5 100%);
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-  /* 一级无序列表：任务 */
-  .description-wrapper > ul {
-    margin: 1.2em 0 0 0;
-    padding-left: 1.1em;
-    list-style-type: disc;
-  }
-  /* 二级列表：指标 */
-  .description-wrapper ul ul {
-    margin-top: .4em;
-    padding-left: 1.3em;
-    list-style-type: circle;
-  }
-  /* 每个 <li> 之间额外留空 */
-  .description-wrapper li + li { margin-top: .55em; }
-  /* 公式自动换行防止溢出 */
-  .description-wrapper .math-inline { white-space:normal; }
-
-    </style>
-          <!-- Scripts -->
     <script src="https://kit.fontawesome.com/fff5b27ec1.js" crossorigin="anonymous"></script>
     <script defer src="./static/js/fontawesome.all.min.js"></script>
     <script src="./static/js/bulma-carousel.min.js"></script>
     <script src="./static/js/index.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 
@@ -83,7 +33,7 @@
             src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
             onload="renderMathInElement(document.body);"></script>
 
-
+    <link rel="stylesheet" href="./static/css/mirage.css" />
   </head>
   <body>
     <!-- ‑‑‑‑ NAVBAR ‑‑‑‑ -->
@@ -144,14 +94,19 @@
               </a>        
             </span>
             <span class="link-block">
-              <a href="https://github.com/vardhandongre/MIRAGE-Benchmark" class="external-link button is-normal is-rounded is-dark">
+              <a href="https://github.com/MIRAGE-Benchmark/MIRAGE-Benchmark" class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                   <i class="fab fa-github"></i>
                 </span>
                 <span>Code</span>
               </a>
             </span>
-            <!-- <a href="#leaderboard" class="button is-dark is-rounded"><span class="icon"><i class="fas fa-trophy"></i></span><span>Leaderboard</span></a> -->
+            <span class="link-block">
+              <!-- Direct to Example Section -->
+              <a href="#MIRAGE Benchmark Examples" class="external-link button is-normal is-rounded is-dark">
+                <span>Examples</span>
+              </a>
+            </span>
           </div>
         </div>
       </div>
@@ -337,6 +292,7 @@
     </script>
     </section>
 
+    <!-- MIRAGE-MMMT SECTION -->
     <section id="MIRAGE-MMMT">
       <section id="MIRAGE-MMMT Title" class="hero is-light is-small">
       <div class="hero-body has-text-centered">
@@ -364,10 +320,124 @@
       </div>
     </section>
 
+    <!-- Example Section -->
+    <section id="MIRAGE Benchmark Examples" class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+      <h1 class="title is-3">
+      <img src="static/figures/logo/MIRAGE_512x512.png" alt="Icon" style="height: 3rem; margin-right: 0.7rem; position: relative; top: 0.8rem;" />MIRAGE Benchmark Examples
+      </h1>      
+    </div>
+    </section>   
+    
+    <!-- MIRAGE-MMST Standard Benchmark -->
+    <section class="slider-section">
+        <h2 class="sectionsubtitle" style="margin-top: 2rem; margin-bottom: -1rem;">MIRAGE-MMST Standard Benchmark</h2>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="static/figures/Category_Examples/Case_Study_Plant_ID_Standard.png">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/figures/Category_Examples/Case_Study_Insect_and_Pest_ID_Standard.png">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/figures/Category_Examples/Case_Study_Plant_Disease_ID_Standard.png">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/figures/Category_Examples/Case_Study_Plant_Disease_MG_Standard.png">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/figures/Category_Examples/Case_Study_Weeds_Plants_MG_Standard.drawio.png">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/figures/Category_Examples/Case_Study_Insect_and_Pest_MG_Standard.png">
+            </div>         
+            <div class="swiper-slide">
+                <img src="static/figures/Category_Examples/Case_Study_Plant_Care_Standard.png">
+            </div>    
+          </div>
+
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </section>
+
+    <!-- MIRAGE-MMST Contextual Benchmark -->
+    <section class="slider-section slider-contextual">
+        <h2 class="sectionsubtitle" style="margin-top: 4rem; margin-bottom: -1.5rem;">MIRAGE-MMST Contextual Benchmark</h2>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="static/figures/Category_Examples/Case_Study_Plant_Disease_MG_Contextual.png">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/figures/Category_Examples/Case_Study_Weeds_MG_Contextual.png">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/figures/Category_Examples/Case_Study_Insect_and_Pest_MG_Contextual.png">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/figures/Category_Examples/Case_Study_Plant_Care_Contextual.png">
+            </div>
+          </div>
+
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </section>
+
+    <!-- MIRAGE LLM-As-a-Judge -->
+    <section class="slider-section slider-contextual">
+        <h2 class="sectionsubtitle" style="margin-top: 4rem; margin-bottom: -1.5rem;">Reasoning-LLM-as-A-Judge</h2>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="static/figures/LLM_Judge_Examples/Case_Study_LLMASJudge_ID.png">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/figures/LLM_Judge_Examples/Case_Study_LLMAsJudge_MG.png">
+            </div>
+          </div>
+
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </section>
+
+  <!-- Swiper Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
+    <script>
+      document.querySelectorAll('.slider-section').forEach(section => {
+
+        const swiperEl      = section.querySelector('.swiper');
+        const nextBtn       = section.querySelector('.swiper-button-next');
+        const prevBtn       = section.querySelector('.swiper-button-prev');
+        const paginationEl  = section.querySelector('.swiper-pagination');
+
+        new Swiper(swiperEl, {
+          slidesPerView: 1,
+          centeredSlides: true,
+          loop: true,
+          grabCursor: true,
+          pagination: {
+            el: paginationEl,
+            clickable: true,
+          },
+          navigation: {
+            nextEl: nextBtn,
+            prevEl: prevBtn,
+          },
+        });
+      });
+    </script>
+
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
-          Website template adapted from <a href="https://nerfies.github.io/">Nerfies</a> under CC BY‑SA‑4.0.
+          Website template adapted from <a href="https://nerfies.github.io/">Nerfies</a> and <a href="https://github.com/MMMU-Benchmark/mmmu-benchmark.github.io/">MMMU</a> under CC BY‑SA‑4.0.
         </p>
       </div>
     </footer>
