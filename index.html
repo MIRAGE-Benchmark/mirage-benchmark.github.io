@@ -16,12 +16,74 @@
     <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
     <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
     <link rel="stylesheet" href="./static/css/index.css" />
+    <style>
+        body { font-family: sans-serif; }
+        .lb-wrapper {max-width:1100px;margin:40px auto 60px;}
 
-    <!-- Scripts -->
+        .sectionsubtitle { text-align: center; font-size: 1.6em; font-weight: bold; margin-bottom: 25px; }
+        .legend { text-align: center; margin-bottom: 25px; }
+        .legend-item { display: inline-block; padding: 8px 16px; margin: 0 8px; border-radius: 8px; font-size: 0.9em; }
+        .legend-open { background-color: #e6f0ff; }
+        .legend-proprietary { background-color: #ffe6e6; }
+
+        tr.open-col td {background:#e6f0ff !important;}
+        tr.proprietary-col td {background:#ffe6e6 !important;}
+        td.best {font-weight:bold;}
+
+        #lb thead th {
+          text-align: center;
+          vertical-align: middle;
+        }
+        
+        #lb th.separator,
+        #lb td.separator {
+          border-right: 1px solid #d3d3d3;
+        }
+
+   /* Description 样式优化 */
+  .description-wrapper {
+    margin-top: 48px;
+    padding: 32px 38px;
+    background: linear-gradient(180deg,#fafafa 0%,#f5f5f5 100%);
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  /* 一级无序列表：任务 */
+  .description-wrapper > ul {
+    margin: 1.2em 0 0 0;
+    padding-left: 1.1em;
+    list-style-type: disc;
+  }
+  /* 二级列表：指标 */
+  .description-wrapper ul ul {
+    margin-top: .4em;
+    padding-left: 1.3em;
+    list-style-type: circle;
+  }
+  /* 每个 <li> 之间额外留空 */
+  .description-wrapper li + li { margin-top: .55em; }
+  /* 公式自动换行防止溢出 */
+  .description-wrapper .math-inline { white-space:normal; }
+
+    </style>
+          <!-- Scripts -->
     <script src="https://kit.fontawesome.com/fff5b27ec1.js" crossorigin="anonymous"></script>
     <script defer src="./static/js/fontawesome.all.min.js"></script>
     <script src="./static/js/bulma-carousel.min.js"></script>
     <script src="./static/js/index.js"></script>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <script defer
+            src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+    <script defer
+            src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body);"></script>
+
+
   </head>
   <body>
     <!-- ‑‑‑‑ NAVBAR ‑‑‑‑ -->
@@ -98,8 +160,8 @@
     <!-- ‑‑‑‑ ABSTRACT ‑‑‑‑ -->
     <section id="abstract" class="section">
       <div class="container is-max-desktop content">
-      <div style="text-align: center;">
-        <h2 class="title is-3">Abstract</h2>
+      <div>
+        <h2 class="sectionsubtitle">Abstract</h2>
       </div>
         <p>
           We introduce <strong>MIRAGE</strong>, a new benchmark for multimodal expert‑level reasoning and decision‑making in consultative interaction settings. Designed for the agriculture domain, MIRAGE captures the full complexity of expert consultations by combining natural user queries, expert‑authored responses, and image‑based context, offering a high‑fidelity benchmark for evaluating models on grounded reasoning, clarification strategies, and long‑form generation.
@@ -128,7 +190,7 @@
       </section>      
       <div class="container is-max-desktop">
         <!-- Overview -->
-        <h3 class="title is-4" style="text-align: center; margin-top: 2rem;">MIRAGE-MMST Overview</h3>
+        <h2 class="sectionsubtitle" style="text-align: center; margin-top: 2rem;">MIRAGE-MMST Overview</h2>
             <p style="margin-bottom: 1.5rem;">
                 <strong>MIRAGE-MMST</strong> is a benchmark designed to assess expert-level, single-turn reasoning in multimodal agricultural consultations. The task setup is similar to a Long-form VQA task. Each instance consists of a natural language question paired with one or more user-provided images and associated metadata (e.g., timestamp, location). Each instance consists of a natural language question <em>q</em>, an associated image set <em>I = {i<sub>1</sub>, …, i<sub>m</sub>}</em>, and metadata <em>meta ∈ M</em>. Formally, a single-turn instance is represented as a triplet <em>(q, I, meta) ∈ Q × I<sup>m</sup> × M</em>, and the model must generate a structured response <em>r = (e, c ∨ m)</em>, where <em>e</em> denotes identified entities (e.g., crop, pest, disease), <em>c</em> is a causal explanation, and <em>m</em> is a management recommendation, if requested. The task evaluates the model's ability to reason causally about visual symptoms, identify relevant agronomic entities, and, when prompted, generate detailed management recommendations grounded in the observed evidence.
             </p>
@@ -144,10 +206,135 @@
         </div>
 
         <!-- Leaderboard -->
-        <h3 class="title is-4 mt-5"  style="text-align: center;" >MIRAGE-MMST Leaderboard</h3>
         <div class="box has-text-centered">
-        <p class="is-size-5">Leaderboard — coming soon</p>
+      <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
+      <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+    <div class="lb-wrapper">
+      <h2 class="sectionsubtitle">MIRAGE-MMST Leaderboard</h2>
+      <div class="legend">
+        <span class="legend-item legend-open">Open-Source</span>
+        <span class="legend-item legend-proprietary">Proprietary</span>
       </div>
+
+      <table id="lb" class="display stripe" style="width:100%">
+        <thead>
+          <tr>
+            <th rowspan="2" class="separator">Name</th>
+            <th colspan="3" class="separator">Identification</th>
+            <th colspan="5" class="separator">Management</th>
+            <th rowspan="2">Overall</th>
+          </tr>
+          <tr>
+            <th class="id-col">Acc</th>
+            <th class="id-col">Reason</th>
+            <th class="id-col">WS</th>
+            <th class="mg-col">Acc</th>
+            <th class="mg-col">Rel</th>
+            <th class="mg-col">Comp</th>
+            <th class="mg-col">Pars</th>
+            <th class="mg-col">WS</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+    <div class="description-wrapper content has-text-justified">
+      <p>
+        This leaderboard benchmarks large vision-language models on the
+        <strong>MMST-Standard</strong> dataset.  
+        The benchmark utilizes LLMs as Judges method. Scores are averaged over three open-source reasoning models:
+        <em>DeepSeek-R1-Distill-Llama-70B</em>,
+        <em>Qwen2-32B</em>, and
+        <em>Phi-3-Reasoning</em>.
+      </p>
+
+      <p>The evaluation comprises two tasks:</p>
+
+      <ul>
+        <li>
+          <strong>Identification&nbsp;(ID) Task</strong>
+          <ul>
+            <li><strong>Acc</strong> – identification accuracy (0&nbsp;–&nbsp;1)</li>
+            <li><strong>Reason</strong> – reasoning accuracy (0&nbsp;–&nbsp;4)</li>
+            <li>
+              <strong>ID-WS</strong> – weighted score  
+              <span class="math-inline">
+                WS&nbsp;=&nbsp;\(\dfrac{2 \times Acc + \tfrac{Reason}{4}}{3} \times 100\)
+              </span>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <strong>Management&nbsp;(MG) Task</strong>
+          <ul>
+            <li>
+              Metrics: <strong>Acc</strong> (Accuracy),
+              <strong>Rel</strong> (Relevance),
+              <strong>Comp</strong> (Completeness),
+              <strong>Pars</strong> (Parsimony) — each 0&nbsp;–&nbsp;4
+            </li>
+            <li>
+              <strong>MG-WS</strong> – weighted score  
+              <span class="math-inline">
+                WS&nbsp;=&nbsp;\(\dfrac{2 \times Acc + Rel + Comp + Pars}{20} \times 100\)
+              </span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>
+        <strong>Overall</strong> – average of the two weighted scores:  
+        <span class="math-inline">\(\tfrac{ID\text{-}WS + MG\text{-}WS}{2}\)</span>
+      </p>
+    </div>
+    </div>
+
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <script>
+    fetch("leaderboards/MMST_Standard.json")
+      .then(r=>r.json())
+      .then(rows=>{
+        const metrics = ["id_acc_pct","id_reason",
+                        "mg_acc","mg_rel","mg_comp","mg_pars",
+                        "id_ws","mg_ws","overall"];
+        const maxVal = Object.fromEntries(
+          metrics.map(m=>[m,Math.max(...rows.map(r=>r[m]))]) );
+
+        const table = $('#lb').DataTable({
+          data: rows,
+          dom : 't',
+          paging: false,
+          order:[[9,'desc']],
+          columns:[
+            {title:"Model", data:"model", className: "separator"},
+            {title:"Acc",    data:"id_acc_pct", className:"id-col"},
+            {title:"Reason", data:"id_reason",  className:"id-col"},
+            {title:"WS",     data:"id_ws",      className:"id-col separator"},
+            {title:"Acc",  data:"mg_acc",  className:"mg-col"},
+            {title:"Rel",  data:"mg_rel",  className:"mg-col"},
+            {title:"Comp", data:"mg_comp", className:"mg-col"},
+            {title:"Pars", data:"mg_pars", className:"mg-col"},
+            {title:"WS",   data:"mg_ws",   className:"mg-col separator"},
+            {title:"Overall", data:"overall"}
+          ],
+          createdRow:(row,data)=>{
+            $(row).addClass(
+              data.group==='open' ? 'open-col' : 'proprietary-col');
+
+            metrics.forEach((m,i)=>{
+              if(data[m]===maxVal[m]) $('td',row).eq(i+1).addClass('best');
+            });
+          }
+        });
+      });
+    </script>
     </section>
 
     <section id="MIRAGE-MMMT">
@@ -160,7 +347,7 @@
       </section>      
       <div class="container is-max-desktop">
         <!-- Overview -->
-        <h3 class="title is-4" style="text-align: center; margin-top: 2rem;">MIRAGE-MMST Overview</h3>
+        <h2 class="sectionsubtitle" style="text-align: center; margin-top: 2rem;">MIRAGE-MMST Overview</h2>
             <p style="margin-bottom: 1.5rem;">
                 <strong>MIRAGE-MMMT</strong> is a multimodal decision-making task, grounded in real-world agricultural consultations. Users pose complex, often image-supported questions about plant health, pest identification, growing conditions, and other agronomic concerns. Each dialogue reflects a practical scenario in which the expert must reason over conversation history and visual context to decide: (1) whether to respond with guidance based on what is known, or (2) whether to pause and seek additional input to resolve a knowledge gap. This introduces a decision-making challenge tightly coupled with natural language generation.
             </p>
@@ -171,7 +358,7 @@
         </div>
 
         <!-- Leaderboard -->
-        <h3 class="title is-4 mt-5"  style="text-align: center;" >MIRAGE-MMMT Leaderboard</h3>
+        <h2 class="sectionsubtitle">MIRAGE-MMMT Leaderboard</h2>
         <div class="box has-text-centered">
         <p class="is-size-5">Leaderboard — coming soon</p>
       </div>
