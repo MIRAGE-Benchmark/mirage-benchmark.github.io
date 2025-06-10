@@ -146,12 +146,21 @@
         <!-- Overview -->
         <h2 class="sectionsubtitle" style="text-align: center; margin-top: 2rem;">MIRAGE-MMST Overview</h2>
             <p style="margin-bottom: 1.5rem;">
-                <strong>MIRAGE-MMST</strong> is a benchmark designed to assess expert-level, single-turn reasoning in multimodal agricultural consultations. The task setup is similar to a Long-form VQA task. Each instance consists of a natural language question paired with one or more user-provided images and associated metadata (e.g., timestamp, location). Each instance consists of a natural language question <em>q</em>, an associated image set <em>I = {i<sub>1</sub>, …, i<sub>m</sub>}</em>, and metadata <em>meta ∈ M</em>. Formally, a single-turn instance is represented as a triplet <em>(q, I, meta) ∈ Q × I<sup>m</sup> × M</em>, and the model must generate a structured response <em>r = (e, c ∨ m)</em>, where <em>e</em> denotes identified entities (e.g., crop, pest, disease), <em>c</em> is a causal explanation, and <em>m</em> is a management recommendation, if requested. The task evaluates the model's ability to reason causally about visual symptoms, identify relevant agronomic entities, and, when prompted, generate detailed management recommendations grounded in the observed evidence.
+              <strong>MIRAGE-MMST</strong> is a benchmark designed to assess multimodal vision-language models on expert-level, single-turn agricultural consultations. Each instance includes a natural-language question, user-submitted images, and associated metadata (e.g., timestamp, location). Models must identify relevant agronomic entities, reason causally about observed visual symptoms, and generate explanatory or actionable management recommendations.
             </p>
-            
+
             <p style="margin-bottom: 1.5rem;">
-                To support varying levels of difficulty and contextual grounding, MIRAGE-MMST is divided into two subsets: a <strong>Standard</strong> subset, consisting of self-contained questions that can be answered using only the provided text and image, and a <strong>Contextual</strong> subset, where successful interpretation depends on implicit information such as time, location, or agricultural context not present in the input. The standard subset evaluates a model's ability to identify entities, infer causal relationships, and generate explanatory or recommendation-based responses. In contrast, the contextual subset contains queries with latent information gaps and elliptical language, requiring models to reconstruct missing context using external priors. We first manually annotated a seed set of contextual examples and then adopted an automated classifier to separate the full dataset.
+              The benchmark features two subsets:
             </p>
+
+            <ul style="list-style-type: none; margin-left: 2rem; margin-bottom: 1.5rem;">
+              <li style="margin-bottom: 1rem;">
+                <strong>Standard subset:</strong> Evaluates models' entity identification, causal reasoning, and recommendation generation using only provided text and images.
+              </li>
+              <li>
+                <strong>Contextual subset:</strong> Assesses the models' abilities to reason over implicit contextual information (e.g., geographic or seasonal details) necessary for accurate interpretation and response.
+              </li>
+            </ul>
 
         <!-- Image for Statistic -->
         <div class="has-text-centered">
