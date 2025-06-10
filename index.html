@@ -104,12 +104,12 @@
               </a>
             </span>
             <span class="link-block">
-              <a href="https://notebooklm.google.com/notebook/340cd116-ee09-47ce-997a-08c24f6a2616/audio" class="external-link button is-normal is-rounded is-dark">
+              <button onclick="toggleAudioPlayer()" class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                   <i class="fas fa-headphones"></i>
                 </span>
                 <span>Audio</span>
-              </a>
+              </button>
             </span>
             <span class="link-block">
               <!-- Direct to Example Section -->
@@ -117,6 +117,17 @@
                 <span>Examples</span>
               </a>
             </span>
+          </div>
+
+          <!-- Audio Player Section -->
+          <div id="audioPlayerSection" class="has-text-centered mt-4" style="display: none;">
+            <div class="box" style="max-width: 600px; margin: 0 auto;">
+              <h3 class="title is-4">MIRAGE Audio Overview</h3>
+              <audio controls style="width: 100%;">
+                <source src="static/audio/MIRAGE_EN.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
           </div>
         </div>
       </div>
@@ -473,5 +484,13 @@
         </p>
       </div>
     </footer>
+
+    <!-- Add this script at the end of the body -->
+    <script>
+      function toggleAudioPlayer() {
+        const audioSection = document.getElementById('audioPlayerSection');
+        audioSection.style.display = audioSection.style.display === 'none' ? 'block' : 'none';
+      }
+    </script>
   </body>
 </html>
