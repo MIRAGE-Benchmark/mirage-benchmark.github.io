@@ -28,7 +28,7 @@
     "date": "2025-06-06"
   },
   {
-    "model": "GPT 4O",
+    "model": "GPT 4o",
     "group": "closed",
     "mg_ws": 70.6,
     "id_ws": 47.0,
@@ -42,7 +42,7 @@
     "date": "2025-06-06"
   },
   {
-    "model": "GPT 4O Mini",
+    "model": "GPT 4o-mini",
     "group": "closed",
     "mg_ws": 66.9,
     "id_ws": 33.1,
