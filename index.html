@@ -121,16 +121,13 @@
         <h2 class="sectionsubtitle">Abstract</h2>
       </div>
         <p>
-          We introduce <strong>MIRAGE</strong>, a new benchmark for multimodal expert‑level reasoning and decision‑making in consultative interaction settings. Designed for the agriculture domain, MIRAGE captures the full complexity of expert consultations by combining natural user queries, expert‑authored responses, and image‑based context, offering a high‑fidelity benchmark for evaluating models on grounded reasoning, clarification strategies, and long‑form generation.
+          <strong>MIRAGE</strong> ushers in a new era of domain-specific evaluation for multimodal AI. While existing vision–language benchmarks focus on short-form question answering or closed-world classification, MIRAGE captures the dynamic, decision-centric nature of real-world expert consultations—where users present open-ended, image-supported queries and expect actionable guidance from specialists.
         </p>
         <p>
-          Grounded in over 35,000 real user–expert interactions and curated through a carefully designed multi‑step pipeline, MIRAGE spans diverse crop health, pest diagnosis, and crop management scenarios. The benchmark includes more than 7,000 unique biological entities, covering plant species, pests, and diseases—making it one of the most taxonomically diverse benchmarks available for vision‑language models.
+          Drawing on approximately 285 000 real-world agricultural consultations from the Ask Extension platform (218 431 single-turn Q&A and 66 962 multi-turn dialogues) and encompassing over 7 000 unique plant, pest, and disease entities, MIRAGE offers both multimodal single-turn and multimodal multi-turn challenges.
         </p>
         <p>
-          Unlike existing benchmarks that rely on well‑specified user inputs and closed‑set taxonomies, MIRAGE features underspecified, context‑rich scenarios with open‑world settings, requiring models to infer latent knowledge gaps, handle rare entities, and proactively guide or respond within the interaction.
-        </p>
-        <p>
-          We evaluate more than 20 frontier vision‑language models using an ensemble of reasoning language models as evaluators, highlighting the significant challenges posed by MIRAGE. Despite strong performance on conventional benchmarks, state‑of‑the‑art VLMs struggle on MIRAGE—particularly in scenarios encountering rare entities and addressing open‑ended user requests. Fine‑tuning <em>Qwen2.5‑VL</em> models on MIRAGE yields measurable gains, demonstrating MIRAGE's value both as a benchmark and a development suite for in‑domain visual reasoning and conversational decision‑making.
+          MIRAGE provides a rigorous testbed for evaluating vision–language models on critical AI capabilities: grounded reasoning, through complex cause-effect inference tasks; multimodal understanding, by requiring fine-grained recognition from real-world user images; and conversational decision-making, by simulating dynamic, multi-turn expert consultations that challenge models to clarify ambiguities or deliver immediate guidance.
         </p>
       </div>
     </section>
