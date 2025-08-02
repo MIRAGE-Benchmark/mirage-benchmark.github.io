@@ -379,10 +379,103 @@
         </div>
 
         <!-- Leaderboard -->
-        <h2 class="sectionsubtitle">MIRAGE-MMMT Leaderboard</h2>
         <div class="box has-text-centered">
-        <p class="is-size-5">Leaderboard — coming soon</p>
+      <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
+      <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+    <div class="lb-wrapper">
+      <h2 class="sectionsubtitle">MIRAGE-MMMT Leaderboard</h2>
+      <div class="legend">
+        <span class="legend-item legend-open">Open-Source</span>
+        <span class="legend-item legend-proprietary">Proprietary</span>
       </div>
+
+      <style>
+        #lb-mmmt th, #lb-mmmt td {
+          text-align: center !important;
+          vertical-align: middle !important;
+        }
+      </style>
+      
+      <table id="lb-mmmt" class="display stripe" style="width:100%">
+        <thead>
+          <tr>
+            <th rowspan="2" class="separator">Name</th>
+            <th colspan="3" class="separator">Zero-Shot</th>
+            <th colspan="3" class="separator">Chain-of-Thought</th>
+          </tr>
+          <tr>
+            <th class="zs-col">Acc%</th>
+            <th class="zs-col">Clarify</th>
+            <th class="zs-col">Respond</th>
+            <th class="cot-col">Acc%</th>
+            <th class="cot-col">Clarify</th>
+            <th class="cot-col">Respond</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <div class="description-wrapper content has-text-justified">
+        <p>
+          This leaderboard benchmarks large vision-language models on the
+          <strong>MMMT</strong> task of the <em>MIRAGE Benchmark</em>.  
+          The benchmark utilizes LLMs as Judges method. Scores are averaged over three open-source reasoning models:
+          <em>DeepSeek-R1-Distill-Llama-70B</em>,
+          <em>Qwen-3-32B</em>, and
+          <em>Phi-4-Reasoning</em>.
+        </p>
+      
+        <h3 class="title is-5 mt-5">Metric Descriptions</h3>
+        <div class="content">
+          <ul>
+            <li><strong>Decision Accuracy (Acc&nbsp;%):</strong> Percentage of turns in which the model correctly decides to <em>Clarify</em> or <em>Respond</em>, matching the gold action.</li>
+            <li><strong>Clarify&nbsp;Score:</strong> For turns where the model asks a clarification question, judges score (0–100) how well the question targets the user’s underlying goal and elicits the missing information.</li>
+            <li><strong>Respond&nbsp;Score:</strong> For turns where the model answers directly, judges score (0–100) the relevance, usefulness, and goal alignment of the response.</li>
+          </ul>
+        </div>
+      </div>      
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <script>
+    fetch("leaderboards/MMMT.json")
+      .then(r=>r.json())
+      .then(rows=>{
+        const metrics = ["zero_shot_acc","zero_shot_clarify","zero_shot_respond",
+                        "cot_acc","cot_clarify","cot_respond"];
+        const maxVal = Object.fromEntries(
+          metrics.map(m=>[m,Math.max(...rows.map(r=>r[m]))]) );
+
+        const table = $('#lb-mmmt').DataTable({
+          data: rows,
+          dom : 't',
+          paging: false,
+          order:[[4,'desc']],
+          columns:[
+            {title:"Model", data:"model", className: "separator"},
+            {title:"Acc%",    data:"zero_shot_acc", className:"zs-col"},
+            {title:"Clarify", data:"zero_shot_clarify",  className:"zs-col"},
+            {title:"Respond", data:"zero_shot_respond",      className:"zs-col separator"},
+            {title:"Acc%",  data:"cot_acc",  className:"cot-col"},
+            {title:"Clarify",  data:"cot_clarify",  className:"cot-col"},
+            {title:"Respond", data:"cot_respond", className:"cot-col"}
+          ],
+          createdRow:(row,data)=>{
+            $(row).addClass(
+              data.group==='open' ? 'open-col' : 'proprietary-col');
+
+            metrics.forEach((m,i)=>{
+              if(data[m]===maxVal[m]) $('td',row).eq(i+1).addClass('best');
+            });
+          }
+        });
+      });
+    </script>
+    </div>
     </section>
 
     <!-- Example Section -->
@@ -463,6 +556,9 @@
             </div>
             <div class="swiper-slide">
                 <img src="static/figures/LLM_Judge_Examples/Case_Study_LLMAsJudge_MG.png">
+            </div>
+            <div class="swiper-slide">
+                <img src="static/figures/LLM_Judge_Examples/Case_Study_LLMAsJudge_MMMT.png">
             </div>
           </div>
 
