@@ -125,6 +125,15 @@
                 <span>Examples</span>
               </a>
             </span>
+            <span class="link-block">
+              <!-- Direct to Error Analysis Section -->
+              <a href="#error-analysis" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-chart-line"></i>
+                </span>
+                <span>Error Analysis</span>
+              </a>
+            </span>
           </div>
 
           <!-- Audio Player Section -->
@@ -476,6 +485,89 @@
       });
     </script>
     </div>
+    </section>
+
+    <!-- ERROR ANALYSIS SECTION -->
+    <section id="error-analysis">
+      <section id="error-analysis-title" class="hero is-light is-small">
+        <div class="hero-body has-text-centered">
+          <h1 class="title is-3">
+            <i class="fas fa-chart-line" style="margin-right: 0.4rem; color: #3273dc;"></i>Error Analysis
+          </h1>      
+        </div>
+      </section>      
+      <div class="container is-max-desktop">
+        <!-- Overview -->
+        <h2 class="sectionsubtitle" style="text-align: center; margin-top: 2rem;">Error Analysis Overview</h2>
+        <p style="margin-bottom: 1.5rem;">
+          Our comprehensive error analysis reveals key insights into model performance across different agricultural domains and task types. The analysis examines common failure patterns, domain-specific challenges, and areas where current vision-language models struggle in agricultural expert consultation scenarios.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+          These visualizations summarize systematic failure patterns in agricultural AI across three tiers: (1) GPT-4.1-only failures, highlighting core domain challenges like fine-grained species distinctions and poor image quality; (2) Qwen-only failures, revealing model-specific issues like vision-language misalignment and confidence errors; and (3) joint failures, showing frontier challenges such as ambiguous visuals and rare species. Bar charts break down the frequency of each error type, while the heatmap offers a side-by-side comparison across models. Together, these plots reveal where models struggle most—and why—helping guide future improvements.
+        </p>
+
+        <!-- Error Analysis Plots -->
+        <div class="columns is-multiline">
+          <!-- Error Heatmap -->
+          <div class="column is-6">
+            <div class="box has-text-centered">
+              <h3 class="title is-5">Error Distribution Heatmap</h3>
+              <img src="static/figures/Error_Analysis/error_heatmap.png" alt="Error Distribution Heatmap" style="max-width: 100%; height: auto;" />
+              <p class="is-size-7 mt-2">Distribution of errors across different agricultural categories and model types</p>
+            </div>
+          </div>
+
+          <!-- Plot 1 -->
+          <div class="column is-6">
+            <div class="box has-text-centered">
+              <h3 class="title is-5">Performance Analysis</h3>
+              <img src="static/figures/Error_Analysis/plot-1.png" alt="Performance Analysis Plot 1" style="max-width: 100%; height: auto;" />
+              <p class="is-size-7 mt-2">Model performance comparison across different evaluation metrics</p>
+            </div>
+          </div>
+
+          <!-- Plot 2 -->
+          <div class="column is-6">
+            <div class="box has-text-centered">
+              <h3 class="title is-5">Domain-Specific Analysis</h3>
+              <img src="static/figures/Error_Analysis/plot-2.png" alt="Domain-Specific Analysis" style="max-width: 100%; height: auto;" />
+              <p class="is-size-7 mt-2">Performance breakdown by agricultural domain categories</p>
+            </div>
+          </div>
+
+          <!-- Plot 3 -->
+          <div class="column is-6">
+            <div class="box has-text-centered">
+              <h3 class="title is-5">Error Pattern Analysis</h3>
+              <img src="static/figures/Error_Analysis/plot-3.png" alt="Error Pattern Analysis" style="max-width: 100%; height: auto;" />
+              <p class="is-size-7 mt-2">Common error patterns and failure modes in agricultural reasoning</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Findings -->
+        <div class="content mt-5">
+          <h3 class="title is-4">Key Findings</h3>
+          <div class="columns">
+            <div class="column is-6">
+              <h4 class="title is-5">Domain-Specific Challenges</h4>
+              <ul>
+                <li>Plant disease identification shows the highest error rates due to visual similarity between different diseases</li>
+                <li>Pest identification challenges arise from small-scale visual features and seasonal variations</li>
+                <li>Management recommendations often lack contextual awareness of geographic and seasonal factors</li>
+              </ul>
+            </div>
+            <div class="column is-6">
+              <h4 class="title is-5">Model Limitations</h4>
+              <ul>
+                <li>Limited fine-grained visual understanding for agricultural entities</li>
+                <li>Insufficient domain knowledge for causal reasoning in plant health</li>
+                <li>Difficulty in generating practical, actionable recommendations</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Example Section -->
