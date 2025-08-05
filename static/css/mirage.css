@@ -21,7 +21,7 @@ body { font-family: sans-serif; }
 
 /* Enhanced Hero Section */
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
   position: relative;
   overflow: hidden;
 }
