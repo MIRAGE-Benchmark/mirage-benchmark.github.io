@@ -1,148 +1,497 @@
 
 /* MMST Leader Board */
 body { font-family: sans-serif; }
-.lb-wrapper {max-width:1100px;margin:40px auto 60px;}
 
-.sectionsubtitle { text-align: center; font-size: 1.6em; font-weight: bold; margin-bottom: 25px; }
-.legend { text-align: center; margin-bottom: 25px; }
-.legend-item { display: inline-block; padding: 8px 16px; margin: 0 8px; border-radius: 8px; font-size: 0.9em; }
-.legend-open { background-color: #e6f0ff; }
-.legend-proprietary { background-color: #ffe6e6; }
-
-tr.open-col td {background:#e6f0ff !important;}
-tr.proprietary-col td {background:#ffe6e6 !important;}
-td.best {font-weight:bold;}
-
-#lb thead th {
-    text-align: center;
-    vertical-align: middle;
+/* Enhanced Color Palette */
+:root {
+  --primary-color: #3273dc;
+  --secondary-color: #00d1b2;
+  --accent-color: #ff3860;
+  --success-color: #23d160;
+  --warning-color: #ffdd57;
+  --info-color: #3298dc;
+  --light-bg: #f5f7fa;
+  --dark-text: #363636;
+  --border-color: #dbdbdb;
+  --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-medium: 0 4px 8px rgba(0,0,0,0.15);
+  --shadow-heavy: 0 8px 16px rgba(0,0,0,0.2);
+  --transition: all 0.3s ease;
 }
 
-#lb th.separator,
-#lb td.separator {
-    border-right: 1px solid #d3d3d3;
-}
-
-.description-wrapper {
-margin-top: 48px;
-padding: 32px 38px;
-background: linear-gradient(180deg,#fafafa 0%,#f5f5f5 100%);
-border: 1px solid #e0e0e0;
-border-radius: 10px;
-font-size: 1rem;
-line-height: 1.7;
-}
-
-.description-wrapper > ul {
-margin: 1.2em 0 0 0;
-padding-left: 1.1em;
-list-style-type: disc;
-}
-.description-wrapper ul ul {
-margin-top: .4em;
-padding-left: 1.3em;
-list-style-type: circle;
-}
-.description-wrapper li + li { margin-top: .55em; }
-.description-wrapper .math-inline { white-space:normal; }
-
-
-/* 外部容器：负责留出箭头槽 */
-.slider-section{
+/* Enhanced Hero Section */
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   position: relative;
-  max-width: 800px;   /* 你的内容宽度 */
-  margin: 0 auto;
-  padding: 0 60px;    /* ← 两侧各留 60px 放箭头 */
-  box-sizing: content-box;  /* 让 padding 不压缩内部内容 */
+  overflow: hidden;
 }
 
-/* Swiper 本体继续裁剪内容 */
-.slider-section .swiper{
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-body {
+  position: relative;
+  z-index: 2;
+}
+
+.hero .title {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero .subtitle {
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Enhanced Logo Section */
+.hero .mt-4 {
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.hero img {
+  transition: var(--transition);
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+.hero img:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+}
+
+/* Enhanced Buttons */
+.external-link.button {
+  background: linear-gradient(135deg, var(--primary-color), #4a90e2);
+  border: none;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.external-link.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
-  overflow: hidden;   /* 关键：剪掉放大后的幻灯片 */
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
 }
 
-/* 幻灯片内部保持居中 */
-.swiper-slide{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  height: 200px;
-  overflow: hidden;   /* 保险 */
+.external-link.button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
 }
 
-.swiper-slide img{
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+.external-link.button:hover::before {
+  left: 100%;
 }
 
-/* 箭头——绝对定位在 slider-section 内侧 10px 处 */
+/* Enhanced Section Styling */
+.section {
+  padding: 4rem 1.5rem;
+}
+
+.sectionsubtitle {
+  text-align: center;
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--dark-text);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.sectionsubtitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
+}
+
+/* Enhanced Box Styling */
+.box {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.box:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Enhanced Error Analysis Section */
+#error-analysis .box {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+#error-analysis .title.is-5 {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+#error-analysis img {
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+#error-analysis img:hover {
+  transform: scale(1.02);
+}
+
+/* Enhanced Leaderboard */
+.lb-wrapper {
+  max-width: 1200px;
+  margin: 40px auto 60px;
+}
+
+.legend {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.legend-item {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 25px;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: var(--transition);
+  box-shadow: var(--shadow-light);
+}
+
+.legend-open {
+  background: linear-gradient(135deg, #e6f0ff, #d1e7ff);
+  color: #1a5f7a;
+}
+
+.legend-proprietary {
+  background: linear-gradient(135deg, #ffe6e6, #ffd1d1);
+  color: #7a1a1a;
+}
+
+.legend-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Enhanced Table Styling */
+#lb thead th {
+  text-align: center;
+  vertical-align: middle;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-bottom: 2px solid var(--primary-color);
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+#lb tbody tr {
+  transition: var(--transition);
+}
+
+#lb tbody tr:hover {
+  background-color: rgba(50, 115, 220, 0.05);
+  transform: scale(1.01);
+}
+
+/* Enhanced Description Wrapper */
+.description-wrapper {
+  margin-top: 48px;
+  padding: 2rem;
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  font-size: 1rem;
+  line-height: 1.7;
+  box-shadow: var(--shadow-light);
+}
+
+/* Enhanced Slider Section */
+.slider-section {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 80px;
+  box-sizing: content-box;
+}
+
 .swiper-button-prev,
-.swiper-button-next{
+.swiper-button-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  background: rgba(255,255,255,.9);
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,0.95);
   border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(0,0,0,.1);
-  z-index: 20;        /* 确保浮在最上层 */
+  box-shadow: var(--shadow-medium);
+  z-index: 20;
   cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid var(--border-color);
 }
 
-.swiper-button-prev{ left: 10px; }
-.swiper-button-next{ right: 10px; }
-
-/* 悬停效果保持不变 */
 .swiper-button-prev:hover,
-.swiper-button-next:hover{
+.swiper-button-next:hover {
   transform: translateY(-50%) scale(1.1);
+  box-shadow: var(--shadow-heavy);
+  background: white;
 }
 
-.swiper-slide{
-  width: 600px;   /* ← 原来 300 */
-  height: 600px;  /* ← 原来 200 */
-}
-
-/* 轮播外层容器要能装得下 */
-.slider-section{
-  max-width: 1000px;   /* 500 × 2 + 箭头空隙，自己算一个合适值 */
-  padding: 0 80px;     /* 箭头槽也相应放大，以免压到卡片 */
-}
-
-:root{
-  /* 箭头符号 & 活动圆点颜色 */
-  --swiper-navigation-color: #666666;   /* 深灰 */
-  --swiper-pagination-color: #666666;   /* 活动态 */
-}
-
-.swiper-slide{
+.swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 600px;
+  height: 600px;
+  transition: var(--transition);
 }
 
-/* 横竖图都不会超出 90% 高度或 90% 宽度 */
-.swiper-slide img{
+.swiper-slide img {
   max-width: 80%;
   max-height: 90%;
   width: auto;
   height: auto;
   object-fit: contain;
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
 }
 
-/* 只影响 contextual 组 */
-.slider-contextual .swiper-slide{
-  height: 1000px;      /* 想要多高改这里 */
+.swiper-slide img:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-medium);
 }
 
-/* 容器要能装得下 */
-.slider-contextual{
-  --arrow-gap: 80px;  /* 如果你用了前面变量法，记得同步调 */
-  max-width: 1000px;  /* 宽度自行调整 */
+/* Enhanced Navigation */
+.navbar {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+  .hero .title {
+    font-size: 2rem;
+  }
+  
+  .hero .subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .sectionsubtitle {
+    font-size: 1.8em;
+  }
+  
+  .slider-section {
+    padding: 0 40px;
+  }
+  
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Enhanced Footer */
+.footer {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: white;
+  padding: 2rem 0;
+  margin-top: 4rem;
+}
+
+.footer a {
+  color: #74b9ff;
+  transition: var(--transition);
+}
+
+.footer a:hover {
+  color: #0984e3;
+  text-decoration: none;
+}
+
+/* Enhanced Audio Player */
+#audioPlayerSection .box {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border: 2px solid var(--primary-color);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+#audioPlayerSection audio {
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+}
+
+/* Enhanced Key Findings Section */
+#error-analysis .content {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: var(--shadow-light);
+}
+
+#error-analysis .title.is-4 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+#error-analysis .title.is-5 {
+  color: var(--dark-text);
+  margin-bottom: 1rem;
+}
+
+#error-analysis ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#error-analysis ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+#error-analysis ul li::before {
+  content: '•';
+  color: var(--primary-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Enhanced Table Colors */
+tr.open-col td {
+  background: linear-gradient(135deg, #e6f0ff, #d1e7ff) !important;
+}
+
+tr.proprietary-col td {
+  background: linear-gradient(135deg, #ffe6e6, #ffd1d1) !important;
+}
+
+td.best {
+  font-weight: bold;
+  background: linear-gradient(135deg, #d4edda, #c3e6cb) !important;
+  color: #155724;
+}
+
+/* Enhanced Section Headers */
+.hero.is-light.is-small {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.hero.is-light.is-small .title {
+  color: var(--dark-text);
+  text-shadow: none;
+}
+
+/* Enhanced Links */
+.publication-authors a {
+  color: var(--primary-color) !important;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.publication-authors a:hover {
+  color: var(--secondary-color) !important;
+  text-decoration: underline;
+}
+
+/* Enhanced Buttons Container */
+.buttons.is-centered {
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.link-block {
+  margin: 0.5rem;
+  transition: var(--transition);
+}
+
+.link-block:hover {
+  transform: translateY(-2px);
+}
+
+/* Enhanced Institutional Logos */
+.hero .mt-4 a {
+  transition: var(--transition);
+  display: inline-block;
+}
+
+.hero .mt-4 a:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.hero .mt-4 img {
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+  transition: var(--transition);
+}
+
+.hero .mt-4 img:hover {
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
 }
