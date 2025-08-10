@@ -448,9 +448,9 @@
         <h3 class="title is-5 mt-5">Metric Descriptions</h3>
         <div class="content">
           <ul>
-            <li><strong>Decision Accuracy (Acc&nbsp;%):</strong> Percentage of turns in which the model correctly decides to <em>Clarify</em> or <em>Respond</em>, matching the gold action.</li>
-            <li><strong>Clarify&nbsp;Score:</strong> For turns where the model asks a clarification question, judges score (0–100) how well the question targets the user’s underlying goal and elicits the missing information.</li>
-            <li><strong>Respond&nbsp;Score:</strong> For turns where the model answers directly, judges score (0–100) the relevance, usefulness, and goal alignment of the response.</li>
+            <li><strong>Decision Accuracy (Acc&nbsp;%):</strong> Percentage of turns where the model correctly chooses between <em>Clarify</em> and <em>Respond</em> actions, matching the expected decision.</li>
+            <li><strong>Goal Relevance for Clarify (%):</strong> Percentage of clarification questions that directly target missing facts essential to achieving the user's goal.</li>
+            <li><strong>Goal Relevance for Respond (%):</strong> Percentage of responses that appropriately address the user's goal using known facts effectively.</li>
           </ul>
         </div>
       </div>      
